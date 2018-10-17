@@ -54,6 +54,12 @@ cal: calculate.c
 	gcc -o calculate calculate.c
 	./calculate
 
+plot: bench_cpy.txt bench_ref.txt output.txt
+	$(Q)gnuplot scripts/runtime.gp
+	$(Q)gnuplot scripts/runtime3.gp
+	$(Q)gnuplot scripts/runtimept.gp
+	$(Q)gnuplot scripts/runtimebox.gp
+
 bench: $(TESTS)
 	@for test in $(TESTS); do\
 		./$$test --bench $(TEST_DATA); \
