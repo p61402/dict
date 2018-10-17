@@ -54,7 +54,11 @@ cal: calculate.c
 	gcc -o calculate calculate.c
 	./calculate
 
-plot: bench_cpy.txt bench_ref.txt output.txt
+one_test: test_cpy test_ref
+	./test_cpy --bench
+	./test_ref --bench
+
+plot: one_test bench_cpy.txt bench_ref.txt output.txt
 	$(Q)gnuplot scripts/runtime.gp
 	$(Q)gnuplot scripts/runtime3.gp
 	$(Q)gnuplot scripts/runtimept.gp
