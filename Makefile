@@ -50,6 +50,10 @@ test:  $(TESTS)
                 -e cache-misses,cache-references,instructions,cycles \
 				./test_ref --bench $(TEST_DATA)
 
+cal: calculate.c
+	gcc -o calculate calculate.c
+	./calculate
+
 bench: $(TESTS)
 	@for test in $(TESTS); do\
 		./$$test --bench $(TEST_DATA); \
